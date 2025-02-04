@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour
             touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Moved)
             {
-                float temp = Mathf.Clamp(transform.position.x + touch.deltaPosition.x * speedModifier * Time.deltaTime, maxLeftPosition, maxRightPosition);
+                float temp = Mathf.Clamp(transform.position.x + touch.deltaPosition.x * (-speedModifier) * Time.deltaTime, maxLeftPosition, maxRightPosition);
                 transform.position = new Vector3(Mathf.Lerp(transform.position.x, temp, lerpSens), transform.position.y, transform.position.z);
             }
             /*if (touch.phase == TouchPhase.Moved && transform.position.x > maxLeftPosition && transform.position.x < maxRightPosition)
@@ -72,7 +72,7 @@ public class PlayerManager : MonoBehaviour
 
     public void MouseControl()
     {
-        float mouseAxis = Mathf.Clamp(transform.position.x + (Input.GetAxisRaw("Horizontal") * Time.deltaTime * mouseSens), maxLeftPosition, maxRightPosition);
+        float mouseAxis = Mathf.Clamp(transform.position.x + (Input.GetAxisRaw("Horizontal") * Time.deltaTime * (-mouseSens)), maxLeftPosition, maxRightPosition);
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, mouseAxis, lerpSens), transform.position.y, transform.position.z);
     }
 

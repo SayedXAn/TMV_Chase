@@ -12,6 +12,7 @@ public class UIManagerScript : MonoBehaviour
     public GameObject gameUI;
     public GameObject finishPanel;
     public GameObject environmentRoot;
+    public Camera mainCamera;
     public GameObject[] healthBar;
 
     [Header("Texts and InputFields")]
@@ -92,14 +93,15 @@ public class UIManagerScript : MonoBehaviour
         
         
     }
-    
 
     public void StartButton()
     {
         menuPanel.SetActive(false);
         gameUI.SetActive(true);
         environmentRoot.SetActive(true);
+        mainCamera.clearFlags = CameraClearFlags.Skybox;
         gameOn = true;
+        StartCoroutine(GameTimerCountDown());
     }
     public void PlayAgainButton()
     {
