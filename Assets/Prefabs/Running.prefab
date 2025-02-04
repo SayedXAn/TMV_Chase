@@ -2213,7 +2213,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1507519976729545245}
   forwardSpeed: 10
-  dragSpeed: 100
+  speedModifier: 0.1
+  maxLeftPosition: -5
+  maxRightPosition: 5
+  mouseSens: 1
+  lerpSens: 1
 --- !u!54 &1507519976729545245
 Rigidbody:
   m_ObjectHideFlags: 0
