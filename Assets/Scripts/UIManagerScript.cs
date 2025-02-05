@@ -26,6 +26,7 @@ public class UIManagerScript : MonoBehaviour
     public int gameTime = 50;
     public bool gameOn = false;
     private int playerPos = -2;
+    private int score = 0;
 
     [Header("Scripts")]
     public LB_Manager lbman;
@@ -72,7 +73,11 @@ public class UIManagerScript : MonoBehaviour
     }
     public void GameWin()
     {
-        gameOn = false;             
+        gameOn = false;
+        SetScore(gameTime + 50);
+        StopCoroutine(GameTimerCountDown());
+        StartCoroutine(ShowPlayerPositon());
+        UpdateScoreToLeaderboard(nameIF.text, score);
         menuPanel.SetActive(false);
         gameUI.SetActive(false);
         environmentRoot.SetActive(false);
@@ -83,6 +88,10 @@ public class UIManagerScript : MonoBehaviour
     public void GameOver(bool timeOver)
     {
         gameOn = false;
+        SetScore(50-gameTime);
+        StopCoroutine(GameTimerCountDown());
+        StartCoroutine(ShowPlayerPositon());
+        UpdateScoreToLeaderboard(nameIF.text, score);
         menuPanel.SetActive(false);
         gameUI.SetActive(false);
         environmentRoot.SetActive(false);
@@ -136,13 +145,22 @@ public class UIManagerScript : MonoBehaviour
         }
     }
 
-    public void UpdateScoreToLeaderboard()
+    public void UpdateScoreToLeaderboard(string name, int score)
     {
-        lbman.SetEntry("Sayyyeeed", 123);
+        lbman.SetEntry(name, score);
     }
 
     public void ShowLeaderboard()
     {
         lbman.GenerateLeaderboard();
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+    public void SetScore(int scr)
+    {
+        score = score + scr;
     }
 }

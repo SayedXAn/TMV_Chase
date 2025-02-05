@@ -123,6 +123,7 @@ public class PlayerManager : MonoBehaviour
     {
         forwardSpeed = 15f;
         playerRunning.GetComponent<Animator>().speed = 1.5f;
+        uiman.SetScore(10);
         yield return new WaitForSeconds(3);
         forwardSpeed = 10f;
         playerRunning.GetComponent<Animator>().speed = 1f;
@@ -139,3 +140,5 @@ public class PlayerManager : MonoBehaviour
 
     
 }
+
+//01700
