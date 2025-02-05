@@ -77,12 +77,14 @@ public class UIManagerScript : MonoBehaviour
         SetScore(gameTime + 50);
         StopCoroutine(GameTimerCountDown());
         StartCoroutine(ShowPlayerPositon());
+        StartCoroutine(AutoShowLB());
         UpdateScoreToLeaderboard(nameIF.text, score);
         menuPanel.SetActive(false);
         gameUI.SetActive(false);
         environmentRoot.SetActive(false);
         finishPanel.SetActive(true);
         finishText.text = "You Win!\nPlay Again";
+
     }
 
     public void GameOver(bool timeOver)
@@ -91,6 +93,7 @@ public class UIManagerScript : MonoBehaviour
         SetScore(50-gameTime);
         StopCoroutine(GameTimerCountDown());
         StartCoroutine(ShowPlayerPositon());
+        StartCoroutine(AutoShowLB());
         UpdateScoreToLeaderboard(nameIF.text, score);
         menuPanel.SetActive(false);
         gameUI.SetActive(false);
@@ -106,6 +109,17 @@ public class UIManagerScript : MonoBehaviour
         }
         
         
+    }
+
+    IEnumerator AutoShowLB()
+    {
+        yield return new WaitForSeconds(5);
+        menuPanel.SetActive(false);
+        gameUI.SetActive(false);
+        environmentRoot.SetActive(false);
+        finishPanel.SetActive(false);
+        gameOn = false;
+        ShowLeaderboard();
     }
 
     public void StartButton()
@@ -140,7 +154,7 @@ public class UIManagerScript : MonoBehaviour
         }
         else
         {
-            finishText.text = finishText.text + "your position: " + playerPos.ToString();
+            finishText.text = finishText.text + "\nyour position: " + playerPos.ToString();
             StopCoroutine(ShowPlayerPositon());
         }
     }
