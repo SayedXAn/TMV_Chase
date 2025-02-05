@@ -18,12 +18,17 @@ public class UIManagerScript : MonoBehaviour
     [Header("Texts and InputFields")]
     public TMP_Text timerText;
     public TMP_Text finishText;
+    public TMP_Text menuNotification;
+    public TMP_InputField nameIF;
 
     [Header("Variables")]
     public int healthCount = 2;
     public int gameTime = 50;
     public bool gameOn = false;
+    private int playerPos = -2;
 
+    [Header("Scripts")]
+    public LB_Manager lbman;
 
     void Start()
     {
@@ -96,6 +101,11 @@ public class UIManagerScript : MonoBehaviour
 
     public void StartButton()
     {
+        if(nameIF.text == "")
+        {
+            menuNotification.text = "Enter your name before proceeding";
+            return;
+        }
         menuPanel.SetActive(false);
         gameUI.SetActive(true);
         environmentRoot.SetActive(true);
@@ -106,5 +116,33 @@ public class UIManagerScript : MonoBehaviour
     public void PlayAgainButton()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void SetPlayerPos(int pos)
+    {
+        playerPos = pos;
+    }
+    IEnumerator ShowPlayerPositon()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (playerPos == -2)
+        {
+            StartCoroutine(ShowPlayerPositon());
+        }
+        else
+        {
+            finishText.text = finishText.text + "your position: " + playerPos.ToString();
+            StopCoroutine(ShowPlayerPositon());
+        }
+    }
+
+    public void UpdateScoreToLeaderboard()
+    {
+        lbman.SetEntry("Sayyyeeed", 123);
+    }
+
+    public void ShowLeaderboard()
+    {
+        lbman.GenerateLeaderboard();
     }
 }

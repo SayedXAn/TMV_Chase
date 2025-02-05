@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5252380520630797795}
   - component: {fileID: 3528857685721941365}
   - component: {fileID: 1923757466061627237}
+  - component: {fileID: 7261877161605075352}
   m_Layer: 0
   m_Name: Mata_Coin
   m_TagString: onnotracker
@@ -108,3 +109,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15521389, y: 0.15521388, z: 0.020302571}
   m_Center: {x: 0, y: 0, z: 0.0000000013969839}
+--- !u!95 &7261877161605075352
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190310060037636302}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4678d75a1286b994abd0bf2cf2d4861f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

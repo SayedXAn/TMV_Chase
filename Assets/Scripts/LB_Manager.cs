@@ -1,13 +1,12 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 using System.Linq;
 using System;
-using MarksAssets.MindAR;
 
-public class LBManager : MonoBehaviour
+public class LB_Manager : MonoBehaviour
 {
     public GameObject LBUI;
     public GameObject loadingScreen;
@@ -16,16 +15,18 @@ public class LBManager : MonoBehaviour
     public float loadingTime = 2f;
     [SerializeField] private Transform scrollViewContent;
     [SerializeField] private GameObject entryPrefab;
-    public UIManager uiman;
+    public UIManagerScript uiman;
     private void Start()
     {
-        /*for (int i = 0; i < 16; i++) 
-        {
-            SetEntry(" ", -1);
-        }*/ //For reseting Leaderboard
-    /*}
+        //DeleteLeaderboard();
+        //for (int i = 0; i < 16; i++) 
+        //{
+        //    SetEntry(" ", -1);
+        //}
 
-    private const string API_URL = "https://leaderboard-backend.mern.singularitybd.net/api/v1/leaderboard?game=3";
+    }
+
+    private const string API_URL = "https://leaderboard-backend.mern.singularitybd.net/api/v1/leaderboard?game=1";
     private const string API_TOKEN = "9b1de5f407f1463e7b2a921bbce364";
 
     public int playerPosition = -1;
@@ -44,7 +45,7 @@ public class LBManager : MonoBehaviour
         }
 
         // Send API request to get leaderboard
-        string url = "https://leaderboard-backend.mern.singularitybd.net/api/v1/leaderboard?game=3";
+        string url = "https://leaderboard-backend.mern.singularitybd.net/api/v1/leaderboard?game=1";
         UnityWebRequest request = UnityWebRequest.Get(url);
         request.SetRequestHeader("x-token", API_TOKEN);
 
@@ -147,7 +148,7 @@ public class LBManager : MonoBehaviour
         string url = "https://leaderboard-backend.mern.singularitybd.net/api/v1/score";
 
         // Create a PlayerScore object
-        PlayerScore postData = new PlayerScore(playerName, playerScore, 3/*ArVenture game id = 3*//*);
+        PlayerScore postData = new PlayerScore(playerName, playerScore, 1);
 
         // Serialize to JSON
         string jsonBody = JsonUtility.ToJson(postData);
@@ -189,7 +190,7 @@ public class LBManager : MonoBehaviour
 
 
 
-    /*public void DeleteLeaderboard()
+    public void DeleteLeaderboard()
     {
         StartCoroutine(ClearLeaderboard());
     }
@@ -208,11 +209,11 @@ public class LBManager : MonoBehaviour
         {
             Debug.Log("Leaderboard cleared successfully.");
         }
-    }*/
+    }
 
 
 
-   /* IEnumerator EktuTimeDen()
+    IEnumerator EktuTimeDen()
     {
         LBUI.SetActive(true);
         loadingScreen.SetActive(true);
@@ -236,4 +237,3 @@ public class LeaderboardEntry
     public string name;
     public int score;
 }
-   */
