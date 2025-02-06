@@ -11,7 +11,7 @@
 /[Uu]ser[Ss]ettings/
 /.utmp
 /Web Builds
-Assets/Plugins/Demigiant
+/[Aa]ssets/Plugins/Demigiant
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
